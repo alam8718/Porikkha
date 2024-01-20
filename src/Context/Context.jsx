@@ -1,10 +1,9 @@
-import {createContext, useContext, useEffect, useState} from "react";
+import {createContext, useContext, useState} from "react";
 
 export const AppContext = createContext();
 
 export const AppProvider = ({children}) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(null);
-
   const questionAnswer = [
     {
       data: {
@@ -68,40 +67,114 @@ export const AppProvider = ({children}) => {
         correct: "clearInterval",
       },
     },
+    {
+      data: {
+        question: "JavaScript is a ____ language?",
+        options: [
+          {answer: "Object-oriented"},
+          {answer: "Object-based"},
+          {answer: "Procedural"},
+          {answer: "None of the above"},
+        ],
+        correct: "Object-oriented",
+      },
+    },
+    {
+      data: {
+        question:
+          "Which of the following keywords is used to define a variable in Javascript?",
+        options: [
+          {answer: "var"},
+          {answer: "let"},
+          {answer: "Both var and let"},
+          {answer: "None of the above"},
+        ],
+        correct: "Both var and let",
+      },
+    },
+    {
+      data: {
+        question: "How can a datatype be declared to be a constant type?",
+        options: [
+          {answer: "const"},
+          {answer: "var"},
+          {answer: "let"},
+          {answer: "constant"},
+        ],
+        correct: "const",
+      },
+    },
+    {
+      data: {
+        question:
+          "What keyword is used to check whether a given property is valid or not?",
+        options: [
+          {answer: "in"},
+          {answer: "is in"},
+          {answer: "exists"},
+          {answer: "lies"},
+        ],
+        correct: "in",
+      },
+    },
+    {
+      data: {
+        question: "What is the use of the <noscript> tag in Javascript?",
+        options: [
+          {answer: "Contents are displayed by non-JS based browsers"},
+          {answer: "Clear all the cookies and cache"},
+          {answer: "Both"},
+          {answer: "None of the above"},
+        ],
+        correct: "Contents are displayed by non-JS based browsers",
+      },
+    },
   ];
   const [selectedOption, setSelectedOptiion] = useState(null);
-  const [timer, setTimer] = useState(null);
+  const [start, setStart] = useState(false);
+  const [correct, setCorrect] = useState(0);
+  const [wrong, setWrong] = useState(0);
+  const [showAnswers, setShowAnswers] = useState(false);
+  const TotalNumQuestion = questionAnswer.length;
+
   // starting the quiz
   const handleStart = () => {
+    setStart(true);
     setCurrentQuestionIndex(0);
   };
 
   //for next question functionality
-
-  useEffect(() => {
-    if (currentQuestionIndex !== null) {
-      if (currentQuestionIndex < 5) {
-        const quizTimer = setTimeout(() => {
-          handleNextQuestion();
-        }, 4000);
-        setTimer(quizTimer);
-      } else {
-        setCurrentQuestionIndex(null);
-      }
-    }
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [currentQuestionIndex]);
-
-  //for next question functionality ends
   const handleNextQuestion = () => {
     setCurrentQuestionIndex((prev) => prev + 1);
   };
+  //for next question functionality ends
 
   //getting the selected option
   const getOption = (userOption) => {
     setSelectedOptiion(userOption);
+    if (currentQuestionIndex < TotalNumQuestion - 1) {
+      handleNextQuestion();
+    } else {
+      setCurrentQuestionIndex(null);
+    }
+  };
+  const handleCount = (value) => {
+    if (value) {
+      setCorrect((prev) => prev + 1);
+    } else {
+      setWrong((prev) => prev + 1);
+    }
+  };
+
+  //play again
+  const playAgain = () => {
+    setStart(false);
+    setCorrect(0);
+    setWrong(0);
+    setShowAnswers(false);
+  };
+  const handleAnswers = () => {
+    setShowAnswers(true);
   };
 
   return (
@@ -114,6 +187,15 @@ export const AppProvider = ({children}) => {
         questionAnswer,
         handleNextQuestion,
         handleStart,
+        TotalNumQuestion,
+        start,
+        setStart,
+        playAgain,
+        handleCount,
+        correct,
+        wrong,
+        handleAnswers,
+        showAnswers,
       }}>
       {children}
     </AppContext.Provider>

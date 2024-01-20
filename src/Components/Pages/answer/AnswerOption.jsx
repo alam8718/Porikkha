@@ -2,9 +2,7 @@ import React, {useState} from "react";
 import {useGlobalContext} from "../../../Context/Context";
 
 function AnswerOption({data}) {
-  const {selectedOption, setSelectedOptiion, currentQuestionIndex, getOption} =
-    useGlobalContext();
-  console.log("i am current question index ", currentQuestionIndex);
+  const {getOption, handleCount} = useGlobalContext();
 
   return (
     <>
@@ -19,18 +17,24 @@ function AnswerOption({data}) {
                 key={index}
                 onClick={() => {
                   getOption(option.answer);
+                  handleCount(data.correct === option.answer ? true : false);
                 }}
-                className={` w-full font-semibold  p-2 rounded-xl text-center  cursor-pointer  ${
-                  selectedOption === option.answer
-                    ? "bg-gray-300 ring-2 ring-amber-500"
-                    : "bg-purple-400"
-                }`}>
+                className={` w-full font-semibold  p-2 rounded-xl text-center  cursor-pointer  bg-amber-400 hover:scale-95 duration-200 `}>
                 {option.answer}
               </li>
             ))}
           </ul>
         </div>
-        <div className="flex justify-center">
+      </div>
+    </>
+  );
+}
+
+export default AnswerOption;
+
+// correct or incorrect show
+/**
+ * <div className="flex justify-center">
           {selectedOption === data?.correct ? (
             <h1 className="bg-green-500 px-4 py-1 text-2xl rounded-xl ">
               Correct
@@ -40,15 +44,10 @@ function AnswerOption({data}) {
               <h1 className="bg-red-500 px-4 py-1 text-2xl rounded-xl ">
                 Incorrect
               </h1>
-              <h1 className="ml-2 text-2xl text-white py-1">
+              { <h1 className="ml-2 text-2xl text-white py-1">
                 Answer is : {data?.correct}
-              </h1>
-            </>
-          )}
-        </div>
-      </div>
-    </>
-  );
-}
-
-export default AnswerOption;
+              </h1> }
+              </>
+              )}
+            </div>
+ */
