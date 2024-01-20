@@ -8,6 +8,7 @@ function App() {
   const {showAnswers} = useGlobalContext();
   return (
     <>
+    
       <div>{showAnswers ? <Answers /> : <QuestionaPage />}</div>
     </>
   );

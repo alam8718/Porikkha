@@ -15,17 +15,19 @@ function QuestionaPage() {
     <>
       <div className="w-full h-screen">
         <div className="w-full h-full flex justify-center items-center ">
-          <div className="bg-[#454867] relative w-[460px] h-[600px] md:w-[900px] md:h-[500px] rounded-2xl shadow-2xl shadow-gray-900/60 overflow-hidden">
+          <div className="bg-[#4E5340] ring-1 ring-white relative w-[460px] h-[600px] md:w-[900px] md:h-[500px] rounded-2xl overflow-hidden">
             {/* starting page  */}
             {start === false && (
               <div className="w-full h-full  flex justify-center items-center">
-                <h1
-                  onClick={() => {
-                    handleStart();
-                  }}
-                  className="w-[100px] h-[100px] font-bold text-2xl hover:ring-2 hover:ring-red-500 duration-300 cursor-pointer  flex justify-center items-center rounded-full bg-gradient-to-tl to-gray-200 via-green-400 from-green-700 ">
-                  Start
-                </h1>
+                <div className="w-[400px] h-[400px] font-bold text-6xl hover:ring-2 hover:ring-white duration-200 cursor-pointer  flex justify-center items-center rounded-full  bg-[#E6AF2E] hover:text-[#E6AF2E] hover:bg-black ">
+                  <h1
+                    onClick={() => {
+                      handleStart();
+                    }}
+                    className="font-bold text-6xl cursor-pointer flex justify-center items-center">
+                    Start Exam
+                  </h1>
+                </div>
               </div>
             )}
 

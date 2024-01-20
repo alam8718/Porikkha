@@ -19,7 +19,7 @@ function AnswerOption({data}) {
                   getOption(option.answer);
                   handleCount(data.correct === option.answer ? true : false);
                 }}
-                className={` w-full font-semibold  p-2 rounded-xl text-center  cursor-pointer  bg-amber-400 hover:scale-95 duration-200 `}>
+                className=" w-full font-semibold  p-2 rounded-xl text-center  cursor-pointer  bg-amber-400 duration-200 hover:bg-[#4E5340] hover:text-amber-400 hover:ring-2 hover:ring-white">
                 {option.answer}
               </li>
             ))}

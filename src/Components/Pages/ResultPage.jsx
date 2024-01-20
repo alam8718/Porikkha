@@ -8,7 +8,7 @@ function ResultPage() {
     <>
       <div className="w-full h-screen">
         <div className=" ">
-          <div className="bg-[#6B5BD4] relative w-[460px] h-[600px] md:w-[900px] md:h-[500px] rounded-2xl shadow-2xl shadow-gray-900/60 overflow-hidden">
+          <div className="bg-[#706C61] relative w-[460px] h-[600px] md:w-[900px] md:h-[500px] rounded-2xl shadow-2xl shadow-gray-900/60 overflow-hidden">
             <div className="w-full h-full text-white flex flex-col gap-10 items-center">
               <h1 className="text-7xl font-primary mt-3">Result</h1>
               <div className=" w-full flex flex-col items-center justify-center gap-6 text-4xl my-10">
@@ -26,12 +26,12 @@ function ResultPage() {
                   onClick={() => {
                     playAgain();
                   }}
-                  className="hover:bg-white ring-1 ring-white hover:ring-0 hover:text-black duration-200 font-semibold px-4 py-2 rounded-lg">
+                  className="hover:bg-green-500 ring-2 ring-green-500 hover:ring-0 hover:text-[#706C61] duration-200 font-semibold px-4 py-2 rounded-lg">
                   Play Again
                 </button>
                 <button
                   onClick={() => handleAnswers()}
-                  className="hover:bg-green-500 ring-2 ring-amber-500 hover:ring-0 text-amber-500 hover:text-white duration-200 font-semibold px-4 py-2 rounded-lg">
+                  className="text-white ring-2 ring-orange-500 hover:text-[#706C61] hover:bg-orange-400 hover:ring-0 duration-200 font-semibold px-4 py-2 rounded-lg">
                   Answers
                 </button>
               </div>
