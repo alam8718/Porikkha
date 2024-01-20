@@ -19,12 +19,12 @@ function QuestionaPage() {
             {/* starting page  */}
             {start === false && (
               <div className="w-full h-full  flex justify-center items-center">
-                <div className="w-[400px] h-[400px] font-bold text-6xl hover:ring-2 hover:ring-white duration-200 cursor-pointer  flex justify-center items-center rounded-full  bg-[#E6AF2E] hover:text-[#E6AF2E] hover:bg-black ">
-                  <h1
-                    onClick={() => {
-                      handleStart();
-                    }}
-                    className="font-bold text-6xl cursor-pointer flex justify-center items-center">
+                <div
+                  onClick={() => {
+                    handleStart();
+                  }}
+                  className="w-[400px] h-[400px] font-bold text-6xl hover:ring-2 hover:ring-white duration-200 cursor-pointer  flex justify-center items-center rounded-full  bg-[#E6AF2E] hover:text-[#E6AF2E] hover:bg-black ">
+                  <h1 className="font-bold text-6xl cursor-pointer flex justify-center items-center">
                     Start Exam
                   </h1>
                 </div>
